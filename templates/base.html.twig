@@ -70,19 +70,26 @@
 						<li><a href="#">Français</a></li>
 					</ul>
 				</div>
-				<div class="header__top__right__auth">
-					<a href="#">
-						<i class="fa fa-user"></i>
-						Login</a>
-				</div>
+				{% if app.user %}
+					<div class="header__top__right__auth">
+						<a href="#">
+							<i class="fa fa-user"></i>
+							{{app.user.firstname}}
+							{{app.user.lastname}}</a>
+					</div>
+				{% else %}
+
+					<div class="header__top__right__auth">
+						<a href="#">
+							<i class="fa fa-user"></i>
+							Login</a>
+					</div>
+				{% endif %}
 			</div>
 			<nav class="humberger__menu__nav mobile-menu">
 				<ul>
 					<li class="active">
 						<a href="./index.html">Home</a>
-					</li>
-					<li>
-						<a href="./shop-grid.html">Shop</a>
 					</li>
 					<li>
 						<a href="#">Pages</a>
@@ -102,11 +109,13 @@
 						</ul>
 					</li>
 					<li>
-						<a href="./blog.html">Blog</a>
-					</li>
-					<li>
 						<a href="./contact.html">Contact</a>
 					</li>
+					{% if is_granted('ROLE_ADMIN') %}
+						<li>
+							<a href="{{ path('easyadmin') }}">Administration</a>
+						</li>
+					{% endif %}
 				</ul>
 			</nav>
 			<div id="mobile-menu-wrap"></div>
@@ -175,11 +184,22 @@
 										<li><a href="#">Français</a></li>
 									</ul>
 								</div>
-								<div class="header__top__right__auth">
-									<a href="#">
-										<i class="fa fa-user"></i>
-										Login</a>
-								</div>
+
+								{% if app.user %}
+									<div class="header__top__right__auth">
+										<a href="#">
+											<i class="fa fa-user"></i>
+											{{app.user.firstname}}
+											{{app.user.lastname}}</a>
+									</div>
+								{% else %}
+
+									<div class="header__top__right__auth">
+										<a href="#">
+											<i class="fa fa-user"></i>
+											Login</a>
+									</div>
+								{% endif %}
 							</div>
 						</div>
 					</div>
@@ -224,27 +244,32 @@
 								<li>
 									<a href="./contact.html">Contact</a>
 								</li>
+								{% if is_granted('ROLE_ADMIN') %}
+									<li>
+										<a href="{{ path('easyadmin') }}">Administration</a>
+									</li>
+								{% endif %}
 							</ul>
 						</nav>
 					</div>
 					<div class="col-lg-3">
 						<div class="header__cart">
 							<ul>
-                            <li>
-								<a href="#">
-									<i class="fa fa-shopping-bag"></i>
-									<span>
-										{{nbArticlePanier}}
-									</span>
-								</a>
-                            
-                            </li>
+								<li>
+									<a href="#">
+										<i class="fa fa-shopping-bag"></i>
+										<span>
+											{{nbArticlePanier}}
+										</span>
+									</a>
+
+								</li>
 							</ul>
 							<div class="header__cart__price">item:
-										<span>
-											{{totalPanier}}
-										</span>
-									</div>
+								<span>
+									{{totalPanier}}
+								</span>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -254,6 +279,8 @@
 			</div>
 		</header>
 		<!-- Header Section End -->
+
+
 		{% block hero %}
 			<!-- Hero Section Begin -->
 			<section class="hero hero-normal">
