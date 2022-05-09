@@ -37,6 +37,7 @@
 							<li class="active" data-filter="*">Tout</li>
 							{% for cat in categories %}
 								<li data-filter=".{{cat.title|replace({' ': '-'})|replace({'.': ''})}}">{{cat.title}}</li>
+
 							{% endfor %}
 						</ul>
 					</div>
@@ -49,7 +50,7 @@
 						<div class="featured__item__pic set-bg" data-setbg="{{prod.image}}">
 							<ul class="featured__item__pic__hover">
 								<li>
-									<a href="#">
+									<a href="{{ path('cart_add',{id: prod.id}) }}">
 										<i class="fa fa-shopping-cart"></i>
 									</a>
 								</li>

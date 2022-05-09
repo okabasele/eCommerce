@@ -49,14 +49,14 @@
 						<a href="#">
 							<i class="fa fa-shopping-bag"></i>
 							<span>
-								{{nbArticlePanier}}
+								{{app.session.get('qt')}}
 							</span>
 						</a>
 					</li>
 				</ul>
 				<div class="header__cart__price">item:
 					<span>
-						{{totalPanier}}
+						{{app.session.get('qt')}}
 					</span>
 				</div>
 			</div>
@@ -259,7 +259,7 @@
 									<a href="#">
 										<i class="fa fa-shopping-bag"></i>
 										<span>
-											{{nbArticlePanier}}
+											{{app.session.get('qt')}}
 										</span>
 									</a>
 
