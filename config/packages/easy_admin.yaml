@@ -9,9 +9,9 @@ easy_admin:
           - { entity: "Product", icon: "folder-open", label: "Produits" }
           - { entity: "Category", icon: "folder-open", label: "Catégories" }
 
-      # - label: "Accès"
-      #   icon: "user"
-      #   children:
-          # - { entity: "User", icon: "folder-open", label: "Utilisateurs" }
+      - label: "Accès"
+        icon: "user"
+        children:
+          - { entity: "User", icon: "folder-open", label: "Utilisateurs" }
 imports:
   - { resource: admin/ }

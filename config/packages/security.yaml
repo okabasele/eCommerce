@@ -36,7 +36,10 @@ security:
         # les admins ont les droits des users
 
     access_control:
+        - { path: ^/login, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/, role: ROLE_USER }
         # - { path: ^/profile, roles: ROLE_USER }
 
     access_denied_url: /

@@ -1,0 +1,63 @@
+{% extends "base.html.twig" %}
+{% form_theme formProduct 'bootstrap_4_layout.html.twig' %}
+{% block pageTitle %}
+{% if editMode %}
+    Modification du produit
+{% else %}
+Création d'un produit    
+{% endif %}
+
+{% endblock %}
+
+
+{% block body %}
+<br>
+{# {{ form(formProduct) }} #}
+{# form() permet d'afficher un formulaire #}
+{# symfony est capable de décider quel type de champ afficher en fonction du type de la propriété #}
+
+{{ form_start(formProduct) }}
+{# form_widget() permet de gérer un champ d'un formulaire #}
+{# form_row() permet de gérer un champ d'un formulaire et son label #}
+
+{{ form_row(formProduct.name, {
+    'label': "Titre", 
+    'attr': {
+        'placeholder': "Titre du produit"
+    }
+}) }}
+
+{{ form_row(formProduct.description, {
+    'label': "Description",
+    'attr': {
+        'placeholder': "Description du produit"
+    }
+}) }}
+
+{{ form_row(formProduct.price, 
+{
+     'label': "Prix",
+}
+)}}
+
+{{ form_row(formProduct.imageFile, 
+{
+     'label': "Fichier d'image",
+}
+)}}
+
+{{ form_row(formProduct.category_id, {
+    label: "Catégorie",
+}) }}
+
+<button type="submit" class="primary-btn">
+{% if editMode %}
+Enregistrer les modifications
+{% else %}
+    Ajouter le produit
+{% endif %}
+</button>
+
+{{ form_end(formProduct) }}
+<br>
+{% endblock %}

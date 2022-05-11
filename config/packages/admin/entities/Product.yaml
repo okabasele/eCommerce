@@ -41,5 +41,5 @@ easy_admin:
           - { property: "description", label: "Description" }
           - { property: "price", label: "Prix" }
           - { property: "image", label: "Image" }
-          # - { property: "image", type: "image", base_path: "database/img/product/" }
+          # - { property: "image", type: "image", base_path: "/images/products/" }
           - { property: "category_id", label: "Catégorie" }

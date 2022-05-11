@@ -76,6 +76,7 @@ class CartService
 
     public function getTotal()
     {
+        $session = $this->rs->getSession();
         //calculer le total du panier
         $total = 0;
 
@@ -84,6 +85,7 @@ class CartService
             $totalItem = $item['product']->getPrice() * $item['quantity'];
             $total += $totalItem;
         }
+        $session->set('total', $total);
         return $total;
     }
 }
