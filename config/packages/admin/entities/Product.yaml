@@ -1,0 +1,45 @@
+easy_admin:
+  entities:
+    Product:
+      class: App\Entity\Product
+      form:
+        fields:
+          - { property: "name", label: "Titre" }
+          - { property: "description", label: "Description" }
+          # - { property: "price", label: "Prix" }
+          - {
+              property: "price",
+              label: "Prix",
+              type: "money",
+              type_options: { currency: "EUR" },
+            }
+          - { property: "image", label: "Image" }
+          - { property: "imageFile", type: "file", label: "Ajouter une image" }
+          - {
+              property: "category_id",
+              label: "Catégorie",
+            }
+
+
+      list:
+        actions:
+          - {
+              name: "edit",
+              icon: "pencil",
+              label: false,
+              css_class: "btn btn-primary",
+            }
+          - {
+              name: "delete",
+              icon: "trash",
+              label: false,
+              css_class: "btn btn-danger",
+            }
+
+        fields:
+          - { property: "name", label: "Titre" }
+          - { property: "description", label: "Description" }
+          - { property: "price", label: "Prix" }
+          - { property: "image", label: "Image" }
+          # - { property: "image", type: "image", base_path: "/images/products/" }
+          - { property: "category_id", label: "Catégorie" }
